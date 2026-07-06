@@ -37,7 +37,7 @@ let er=erValid?100*inter/reach:0;
 let gcRaw=$('goalCurrent').value.trim(),gtRaw=$('goalTarget').value.trim();
 let goalValid=gcRaw!==''&&gtRaw!=='';
 let gc=Number(gcRaw)||0,gt=Number(gtRaw)||0,goalPct=(goalValid&&gt)?Math.min(100,100*gc/gt):0;
-let ranked=posts.filter(p=>p.title).slice().sort((a,b)=>b.views-a.views),top=ranked.slice(0,3),bottom=ranked.slice(-3).reverse();
+let ranked=posts.filter(p=>p.title).slice().sort((a,b)=>b.views-a.views),top=ranked.slice(0,3),bottom=ranked.slice(top.length).slice(-3).reverse();
 let m=$('month').value?new Date($('month').value+'-02').toLocaleDateString('en',{month:'long',year:'numeric'}):'Reporting month';
 let kpis=[];
 if(pd.length){kpis.push(`<div class="kpi"><small>Total followers</small><strong>${fmt(end)}</strong><span class="delta">${growth>=0?'+':''}${fmt(growth)} this month</span></div>`);kpis.push(`<div class="kpi"><small>Follower growth</small><strong>${gpct.toFixed(1)}%</strong><span class="delta">Across active platforms</span></div>`);}
